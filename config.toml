@@ -102,18 +102,18 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
     gitmentCSS = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitment@0.0.3/style/default.min.css" crossorigin="anonymous">'
 
   [params.gitment]          # Gitment is a comment system based on GitHub issues. see https://github.com/imsun/gitment
-    owner = ""              # Your GitHub ID
-    repo = ""               # The repo to store comments
-    clientId = ""           # Your client ID
-    clientSecret = ""       # Your client secret
+    owner = "mustang1988"              # Your GitHub ID
+    repo = "git@github.com:mustang1988/blog_comments.git"               # The repo to store comments
+    clientId = "715d102db9b27b46ae34"           # Your client ID
+    clientSecret = "482b32f1d86988137b9be6f5d54901f2598d0ca6"       # Your client secret
 
 
-  [params.reward]                                         # 文章打赏
+  #[params.reward]                                         # 文章打赏
     enable = false
     wechat = "/path/to/your/wechat-qr-code.png"           # 微信二维码
     alipay = "/path/to/your/alipay-qr-code.png"           # 支付宝二维码
 
-  [params.social]                                         # 社交链接
+  #[params.social]                                         # 社交链接
     a-email = "mailto:your@email.com"
     b-stack-overflow = "http://localhost:1313"
     c-twitter = "http://localhost:1313"
