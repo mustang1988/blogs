@@ -6,7 +6,7 @@ tags:
     - 规范
 categories:
     - Git
-comment: false
+gitment: true
 ---
 
 ## 1. Commit message 有啥用
