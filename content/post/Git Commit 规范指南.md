@@ -1,5 +1,5 @@
 ---
-date: 2018-03-28
+date: 2017-04-14
 title: "Git Commit 规范指南"
 tags:
     - Git
