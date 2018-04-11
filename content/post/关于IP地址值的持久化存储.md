@@ -91,3 +91,57 @@ gitment: true
       127.0.0.1 => 2130706433
       2130706440.9084392 => 127.0.0.8
   ```
+  * 然而在使用中,并不需要这么麻烦的
+
+  在数mysql数据库中,其实已经内见了字符串IP,int互转的内置函数inet_aton()和inet_ntoa(),在插入数据时我们只需要声明好字段的类型,然后插入的时候和查询的时候调用下就可以了
+  
+  ```sql
+    CREATE TABLE `user` (
+     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+     `name` varchar(100) NOT NULL,
+     `ip` int(10) unsigned NOT NULL,
+     PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB;
+    
+    
+    INSERT INTO `user` (`id`, `name`, `ip`) VALUES
+    (2, 'Abby', inet_aton('192.168.1.1')),
+    (3, 'Daisy', inet_aton('172.16.11.66')),
+    (4, 'Christine', inet_aton('220.117.131.12'));
+    
+    SELECT `id`,`name`,inet_ntoa(`ip`) AS `ip` FROM `user`;
+  ```
+  
+  运行结果
+  
+  ```shell
+  mysql> CREATE TABLE `user` (
+      ->      `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+      ->      `name` varchar(100) NOT NULL,
+      ->      `ip` int(10) unsigned NOT NULL,
+      ->      PRIMARY KEY (`id`)
+      ->     ) ENGINE=InnoDB;
+  Query OK, 0 rows affected (0.02 sec)
+
+  mysql>
+  mysql>
+  mysql>     INSERT INTO `user` (`id`, `name`, `ip`) VALUES
+      ->     (2, 'Abby', inet_aton('192.168.1.1')),
+      ->     (3, 'Daisy', inet_aton('172.16.11.66')),
+      ->     (4, 'Christine', inet_aton('220.117.131.12'));
+  Query OK, 3 rows affected (0.00 sec)
+  Records: 3  Duplicates: 0  Warnings: 0
+
+  mysql>
+  mysql>     SELECT `id`,`name`,inet_ntoa(`ip`) AS `ip` FROM `user`;
+  +----+-----------+----------------+
+  | id | name      | ip             |
+  +----+-----------+----------------+
+  |  2 | Abby      | 192.168.1.1    |
+  |  3 | Daisy     | 172.16.11.66   |
+  |  4 | Christine | 220.117.131.12 |
+  +----+-----------+----------------+
+  3 rows in set (0.00 sec)
+  ```
+  
+  
